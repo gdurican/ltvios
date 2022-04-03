@@ -30,7 +30,8 @@ struct Article: Decodable {
     let description: String?
     let author: String?
     let image: String?
-    let date: String?
+    var dateString: String?
+    var date: Date?
     let link: String?
     let uuid: String?
     
@@ -39,7 +40,7 @@ struct Article: Decodable {
         case description
         case author
         case image
-        case date           = "article_date"
+        case dateString           = "article_date"
         case link
         case uuid
         
@@ -51,7 +52,13 @@ struct Article: Decodable {
         description = try container.decodeIfPresent(String.self, forKey: CodingKeys.description)
         author = try container.decodeIfPresent(String.self, forKey: CodingKeys.author)
         image = try container.decodeIfPresent(String.self, forKey: CodingKeys.image)
-        date = try container.decodeIfPresent(String.self, forKey: CodingKeys.date)
+        dateString = try container.decodeIfPresent(String.self, forKey: CodingKeys.dateString)
+        
+        /*
+         This is a workaround because for some unknown reason having the decoder.dateDecodingStrategy = .formatted(DateFormatter.ltvFormat)
+         did not solve the problem. Even though when testing the format with date from string, it returned the correct result.
+         */
+        date = DateFormatter.ltvFormat.date(from: dateString ?? "")
         link = try container.decodeIfPresent(String.self, forKey: CodingKeys.link)
         uuid = try container.decodeIfPresent(String.self, forKey: CodingKeys.title)
     }

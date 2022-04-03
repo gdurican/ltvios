@@ -37,7 +37,7 @@ class ArticleRepository: ObjectRepositoryBase {
                         return
                     }
                     
-                    do { 
+                    do {
                         let articleData = try JSONDecoder().decode(ArticleData.self, from: responseData)
                         
                         completion(articleData.articles, nil)
