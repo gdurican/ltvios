@@ -28,6 +28,7 @@ class ArticleRepository: ObjectRepositoryBase {
             }
             
             if let response = response as? HTTPURLResponse {
+                //check the http code of the request and further send it in one of the 2 categories: success or failure
                 let result = self.manager.handleNetworkResponse(response)
                 
                 switch result {
@@ -38,6 +39,7 @@ class ArticleRepository: ObjectRepositoryBase {
                     }
                     
                     do {
+                        //use a JSONDecoder object to map the data from the JSON to a ArticleData object
                         let articleData = try JSONDecoder().decode(ArticleData.self, from: responseData)
                         
                         completion(articleData.articles, nil)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GWO-pX-mLo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -25,7 +25,7 @@
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LTV iOS " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MN-pd-zL6">
-                                <rect key="frame" x="10" y="238" width="394" height="37"/>
+                                <rect key="frame" x="10" y="194" width="394" height="37"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oXL-hI-cnG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <connections>
                                     <outlet property="delegate" destination="hDv-ch-UT4" id="xXG-tg-NeR"/>
                                 </connections>
@@ -76,16 +76,14 @@
                             <constraint firstItem="sg0-4Z-rQJ" firstAttribute="trailing" secondItem="oXL-hI-cnG" secondAttribute="trailing" id="yNh-SM-P5j"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" selectedImage="map.fill" id="egB-Wv-C2u">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Map" id="HOD-Vx-ejo"/>
                     <connections>
                         <outlet property="mapView" destination="oXL-hI-cnG" id="xex-U7-173"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EdO-No-lfz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2808.6956521739135" y="412.5"/>
+            <point key="canvasLocation" x="3835" y="487"/>
         </scene>
         <!--Map Search Results View Controller-->
         <scene sceneID="xoc-kO-QWb">
@@ -129,7 +127,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OzR-mx-ELh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3740" y="434"/>
+            <point key="canvasLocation" x="5559.420289855073" y="433.92857142857139"/>
         </scene>
         <!--Blog-->
         <scene sceneID="X9a-U1-ZMM">
@@ -157,18 +155,56 @@
                             <constraint firstItem="nNt-zs-Syp" firstAttribute="trailing" secondItem="GXQ-is-kut" secondAttribute="trailing" id="scC-tY-lb6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Blog" id="twE-UO-RfB">
-                        <imageReference key="image" image="book" catalog="system" symbolScale="large"/>
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <imageReference key="selectedImage" image="book.fill" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Blog" id="KYD-dU-lv5"/>
                     <connections>
                         <outlet property="tableView" destination="GXQ-is-kut" id="BbP-6t-SUh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7JL-LH-6mW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2808.6956521739135" y="-194.19642857142856"/>
+            <point key="canvasLocation" x="3836" y="-218"/>
+        </scene>
+        <!--Article-->
+        <scene sceneID="Zf0-oK-5tA">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" title="Article" id="77X-aV-faD" customClass="WebViewController" customModule="ltvios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Yg-DO-4NV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cc6-2o-X1k">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="13W-Jj-uqO">
+                                <rect key="frame" x="188.5" y="404.5" width="37" height="37"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cIQ-6W-osF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="13W-Jj-uqO" firstAttribute="centerY" secondItem="7Yg-DO-4NV" secondAttribute="centerY" constant="-25" id="553-pA-giT"/>
+                            <constraint firstItem="13W-Jj-uqO" firstAttribute="centerX" secondItem="7Yg-DO-4NV" secondAttribute="centerX" id="7Wf-me-mNp"/>
+                            <constraint firstAttribute="bottom" secondItem="Cc6-2o-X1k" secondAttribute="bottom" id="OQ5-s9-EyH"/>
+                            <constraint firstItem="Cc6-2o-X1k" firstAttribute="leading" secondItem="cIQ-6W-osF" secondAttribute="leading" id="U3N-yO-XZs"/>
+                            <constraint firstItem="cIQ-6W-osF" firstAttribute="trailing" secondItem="Cc6-2o-X1k" secondAttribute="trailing" id="YVw-ng-uty"/>
+                            <constraint firstItem="Cc6-2o-X1k" firstAttribute="top" secondItem="7Yg-DO-4NV" secondAttribute="top" id="kFM-sA-yvy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="13W-Jj-uqO" id="H3t-ZQ-JYA"/>
+                        <outlet property="webView" destination="Cc6-2o-X1k" id="taD-as-6qc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3p-o8-udo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5557.971014492754" y="-207.58928571428569"/>
         </scene>
         <!--Main Tab View Controller-->
         <scene sceneID="eT4-Mr-KKz">
@@ -183,31 +219,56 @@
                         <color key="selectedImageTintColor" systemColor="systemOrangeColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="cDl-6n-5yw" kind="relationship" relationship="viewControllers" id="A44-CQ-2SQ"/>
-                        <segue destination="hDv-ch-UT4" kind="relationship" relationship="viewControllers" id="Dks-54-vMp"/>
+                        <segue destination="2kk-2f-2Dy" kind="relationship" relationship="viewControllers" id="A44-CQ-2SQ"/>
+                        <segue destination="aU3-G1-XGA" kind="relationship" relationship="viewControllers" id="Dks-54-vMp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vk-Lp-dZl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1915.9420289855075" y="108.48214285714285"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ucY-Km-MDk">
+        <!--Blog-->
+        <scene sceneID="Kgz-2T-kTc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GWO-pX-mLo" sceneMemberID="viewController">
+                <navigationController title="Blog" automaticallyAdjustsScrollViewInsets="NO" id="2kk-2f-2Dy" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Blog" selectedImage="book.fill" catalog="system" id="twE-UO-RfB">
+                        <imageReference key="image" image="book" catalog="system" symbolScale="large"/>
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cke-BI-mKq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p41-rf-Zui">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iIh-KA-KB8"/>
+                        <segue destination="cDl-6n-5yw" kind="relationship" relationship="rootViewController" id="M4e-g1-A9o"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CkB-rd-3rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xit-Kk-Osl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="109.82142857142857"/>
+            <point key="canvasLocation" x="2808.6956521739135" y="-194.19642857142856"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="Atu-9z-W5D">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aU3-G1-XGA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" selectedImage="map.fill" id="egB-Wv-C2u">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="of3-RF-zc3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hDv-ch-UT4" kind="relationship" relationship="rootViewController" id="4ie-tI-Nbo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWO-Jb-NrZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2809" y="500"/>
         </scene>
     </scenes>
     <resources>

@@ -22,14 +22,7 @@ class BlogViewController: BaseTabPageViewController, BlogCoordinated {
         self.controllerTitle = "Blog"
         tableView.register(UINib(nibName: cellId, bundle: nil), forCellReuseIdentifier: cellId)
         tableView.separatorColor = UIColor.white
-        self.tabBarController?.title = "Checking this out"
         self.tableView.backgroundColor = UIColor.white
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.navigationItem.searchController = nil
     }
 }
 
@@ -54,6 +47,9 @@ extension BlogViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        tableView.deselectRow(at: indexPath, animated: true)
+        let urlStr = articles?[indexPath.row].link
+        
+        self.coordinator?.showArticleDetail(articleUrlString: urlStr)
     }
 }

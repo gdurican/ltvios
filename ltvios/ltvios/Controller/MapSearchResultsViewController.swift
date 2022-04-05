@@ -101,6 +101,8 @@ extension MapSearchResultsViewController: UISearchResultsUpdating {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
+        request.resultTypes.insert(.address)
+        request.resultTypes.insert(.pointOfInterest)
         let search = MKLocalSearch(request: request)
         search.start { response, error in
             

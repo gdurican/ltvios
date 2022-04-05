@@ -12,20 +12,18 @@ enum ArticleAPI {
     case article(url: String)
 }
 
-//https://raw-data.getsandbox.com/mobile.json
 extension ArticleAPI: EndPointType {
     var baseURL: URL {
-        let url = URL(string: "https://raw-data.getsandbox.com")!
+        let url = URL(string: "https://hiring.ltvops.com")!
         return url
     }
     
     var path: String? {
         switch self {
         case .articleList:
-            return "/mobile.json"
-        case .article(let url):
+            return "/articles/index.mobile-ios.json"
+        case .article(_):
             return ""
-            #warning("GABI check here, probably needs to return directly in baseURL")
         }
     }
     
@@ -39,7 +37,6 @@ extension ArticleAPI: EndPointType {
     
     var task: HTTPTask {
         return .requestParametersAndHeaders(additionalHeaders: headers)
-        #warning("GABI for images you probably add here the parameters")
     }
     
     

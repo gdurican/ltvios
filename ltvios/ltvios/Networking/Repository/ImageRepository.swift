@@ -14,12 +14,12 @@ class ImageRepository: ImageRepositoryBase {
     
     typealias R = ImageAPI
     
-#warning("GABI here change to retunr a URLDATATASK to use to cancel later")
     func getData(_ urlString: String, completion: @escaping (Data?, String?) -> ()) -> Cancellable? {
         guard urlString.count > 0 else {
             return nil
         }
         
+        //if there is already an image cached for that url, return that one and don't do the request again
         if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
             DispatchQueue.main.async {
                 completion(imageFromCache.data, nil)
@@ -36,9 +36,10 @@ class ImageRepository: ImageRepositoryBase {
             }
             
             if let response = response as? HTTPURLResponse {
+                //check the http code of the request and further send it in one of the 2 categories: success or failure
                 let result = self.manager.handleNetworkResponse(response)
-                switch result {
-                    
+                
+                switch result {   
                 case .success:
                     guard let responseData = data else {
                         completion(nil, NetworkResponse.noData.rawValue)
@@ -60,7 +61,5 @@ class ImageRepository: ImageRepositoryBase {
         
         return task
     }
-    
-    #warning("GABI here ")
 }
 

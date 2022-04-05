@@ -11,11 +11,16 @@ import UIKit
 class BlogCoordinator: BlogCoordinatorStandard {
     var parentCoordinator: MainCoordinatorStandard?
     
-    var rootViewController: UIViewController = UIViewController()
+    var rootViewController: UIViewController?
     
-    func start() -> UIViewController {
-        let vc = BlogViewController.instantiateFromStoryboard()
+    func start() -> UIViewController? {
+        return rootViewController
+    }
+    
+    func showArticleDetail(articleUrlString: String?) {
+        let webVC = WebViewController.instantiateFromStoryboard()
+        webVC.urlString = articleUrlString
         
-        return vc
-    }    
+        self.navigationViewController?.pushViewController(webVC, animated: true)
+    }
 }

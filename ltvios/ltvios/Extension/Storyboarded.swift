@@ -14,11 +14,10 @@ protocol Storyboarded {
 
 extension Storyboarded where Self: UIViewController {
     static func instantiateFromStoryboard() -> Self {
-        #warning("GABI check the comments here")
-        //this returns something like app.ViewController
+        //this returns something like ltvios.ViewController
         let name = NSStringFromClass(self)
         
-        //from app.ViewController --> ViewController
+        //from ltvios.ViewController --> ViewController
         let className = name.components(separatedBy: ".")[1]
         
         //instantiate the storyboard

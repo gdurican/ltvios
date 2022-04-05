@@ -7,6 +7,7 @@
 
 import Foundation
 
+//repository protocol to have everything request/response related 'under the hood' and from the other classes we just call repository.getWhatWeNeed
 protocol Repository {
     associatedtype R: EndPointType
     

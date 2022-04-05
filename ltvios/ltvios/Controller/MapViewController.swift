@@ -26,7 +26,7 @@ class MapViewController: BaseTabPageViewController, MapCoordinated, MKMapViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        linkSearchControllerToTabBar()
+        linkSearchControllerToNavigationItem()
         clearSearchBar()
     }
     
@@ -42,8 +42,8 @@ class MapViewController: BaseTabPageViewController, MapCoordinated, MKMapViewDel
         searchController?.searchBar.resignFirstResponder()
     }
     
-    func linkSearchControllerToTabBar() {
-        self.tabBarController?.navigationItem.searchController = searchController
+    func linkSearchControllerToNavigationItem() {
+        self.navigationItem.searchController = searchController
     }
     
     func clearSearchBar() {
@@ -143,7 +143,6 @@ extension MapViewController: CLLocationManagerDelegate {
         }
         
         zoomOnLocation(location: location)
-        
     }
 }
 

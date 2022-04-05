@@ -24,46 +24,54 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     func updateUI() {
-        titleLabel.text = article?.title
+        //update UI elements to show the article data
+        titleLabel.text = article?.title?.trimmingCharacters(in: .whitespacesAndNewlines)
         descriptionLabel.text = article?.description
-        authorLabel.text = article?.author != nil ? "by \((article?.author)!)" : ""
+        authorLabel.attributedText = authorAttrString(authorStr: article?.author)
         dateLabel.text = DateFormatter.dayMonthYearFormat.string(from: article?.date ?? Date())
     }
     
+    func authorAttrString(authorStr: String?, font: UIFont? = UIFont.systemFont(ofSize: 12.0), boldFont: UIFont? = UIFont.boldSystemFont(ofSize: 12.0)) -> NSMutableAttributedString? {
+        //creates an atrributed string like 'by AUTHOR', where AUTHOR will be bolded
+        guard let authorStr = authorStr else {
+            return nil
+        }
+        
+        let byAttributed = NSMutableAttributedString(string: "by ", attributes: [NSAttributedString.Key.font : font!])
+        let authorAttributed = NSMutableAttributedString(string: authorStr, attributes: [NSAttributedString.Key.font : boldFont!])
+        
+        byAttributed.append(authorAttributed)
+        
+        return byAttributed
+    }
+    
     func configureWithArticle(article: Article?, repository: ImageRepository?) {
-        guard let article = article else {
+        guard let article = article, let imageUrl = article.image else {
             return
         }
         
+        //set the article object to start the UI update
         self.article = article
-        let ht = "https://avatars.githubusercontent.com/u/46995138?v=4"
-        task = repository?.getData(ht ?? "", completion: { [weak self] data, error in
-//        task = repo?.getData(article.image ?? "", completion: { [weak self] data, error in
-            print("WTF START")
+        
+        //bind the image download to a local variable so on prepareForReuse method the download gets cancelled
+        //this way, a quick scroll through the table view will not show any lag
+        task = repository?.getData(imageUrl, completion: { [weak self] data, error in
             guard let self = self, let imageData = data else {
                 return
             }
             
-
-            print ("WTF")
             DispatchQueue.main.async {
-//                if error != nil {
-                    self.artImageView.image = UIImage(data: imageData )
-//                }
+                self.artImageView.image = UIImage(data: imageData )
             }
             
         })
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        //when the system prepares the cell object to be reused, we set the image back to the placeholder and cancel the current image download
         task?.cancel()
-//        artImageView.image = UIImage(named: "placeholder")
+        artImageView.image = UIImage(named: "placeholder")
     }
 }

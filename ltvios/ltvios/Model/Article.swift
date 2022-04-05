@@ -26,14 +26,14 @@ struct ArticleData: Decodable {
 }
 
 struct Article: Decodable {
-    let title: String?
-    let description: String?
-    let author: String?
-    let image: String?
+    var title: String?
+    var description: String?
+    var author: String?
+    var image: String?
     var dateString: String?
     var date: Date?
-    let link: String?
-    let uuid: String?
+    var link: String?
+    var uuid: String?
     
     enum CodingKeys: String, CodingKey {
         case title
@@ -51,7 +51,8 @@ struct Article: Decodable {
         title = try container.decodeIfPresent(String.self, forKey: CodingKeys.title)
         description = try container.decodeIfPresent(String.self, forKey: CodingKeys.description)
         author = try container.decodeIfPresent(String.self, forKey: CodingKeys.author)
-        image = try container.decodeIfPresent(String.self, forKey: CodingKeys.image)
+        let decodedImage: String? = try container.decodeIfPresent(String.self, forKey: CodingKeys.image)
+        image = imageRebuiltUrlString(decodedImage)
         dateString = try container.decodeIfPresent(String.self, forKey: CodingKeys.dateString)
         
         /*
@@ -61,5 +62,31 @@ struct Article: Decodable {
         date = DateFormatter.ltvFormat.date(from: dateString ?? "")
         link = try container.decodeIfPresent(String.self, forKey: CodingKeys.link)
         uuid = try container.decodeIfPresent(String.self, forKey: CodingKeys.title)
+    }
+    
+    func imageRebuiltUrlString(_ urlStr: String?) -> String? {
+        /*
+         The original image url needs to be transformed so it includes the new parameters as well - fit-in, 60x0, filters:autojpg()
+         What is done below is the string from the JSON gets transformed into a URL object so we can grab the path, the host and the last path component,
+         which is the image name.
+         Afterwards, we add the scheme + the host together with the new parameters and the image name in an array and then join the components by '/'
+         */
+        guard let urlStr = urlStr,
+              let url = URL(string: urlStr),
+              let scheme = url.scheme,
+              let host = url.host,
+              url.pathComponents.count > 1
+        else {
+            return ""
+        }
+        
+        let imageName = url.pathComponents.last ?? ""
+        let fitIn = "fit-in"
+        let imageSize = "60x0"
+        let filters = "filters:autojpg()"
+        let newHost = scheme + "://" + host
+        let newUrlStr = [newHost, fitIn, imageSize, filters, imageName].joined(separator: "/")
+        
+        return newUrlStr
     }
 }

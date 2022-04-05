@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		52790B3D27F9B9B1001B1433 /* MapSearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52790B3C27F9B9B1001B1433 /* MapSearchResultsViewController.swift */; };
 		52790B3F27FA040B001B1433 /* BaseTabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52790B3E27FA040B001B1433 /* BaseTabPageViewController.swift */; };
+		529FB0F027FC93F90009AD1F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB0EF27FC93F90009AD1F /* WebViewController.swift */; };
+		529FB0F227FCB23A0009AD1F /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529FB0F127FCB23A0009AD1F /* SplashCoordinator.swift */; };
 		52B551D627F5E0A5001B6DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B551D527F5E0A5001B6DA4 /* AppDelegate.swift */; };
 		52B551D827F5E0A5001B6DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B551D727F5E0A5001B6DA4 /* SceneDelegate.swift */; };
-		52B551DA27F5E0A5001B6DA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B551D927F5E0A5001B6DA4 /* ViewController.swift */; };
 		52B551DD27F5E0A5001B6DA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B551DB27F5E0A5001B6DA4 /* Main.storyboard */; };
 		52B551DF27F5E0A7001B6DA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52B551DE27F5E0A7001B6DA4 /* Assets.xcassets */; };
 		52B551E227F5E0A7001B6DA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52B551E027F5E0A7001B6DA4 /* LaunchScreen.storyboard */; };
@@ -47,10 +48,11 @@
 /* Begin PBXFileReference section */
 		52790B3C27F9B9B1001B1433 /* MapSearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchResultsViewController.swift; sourceTree = "<group>"; };
 		52790B3E27FA040B001B1433 /* BaseTabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabPageViewController.swift; sourceTree = "<group>"; };
+		529FB0EF27FC93F90009AD1F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		529FB0F127FCB23A0009AD1F /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		52B551D227F5E0A5001B6DA4 /* ltvios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ltvios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B551D527F5E0A5001B6DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52B551D727F5E0A5001B6DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		52B551D927F5E0A5001B6DA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52B551DC27F5E0A5001B6DA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52B551DE27F5E0A7001B6DA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52B551E127F5E0A7001B6DA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 				52B551E927F5E459001B6DA4 /* Coordinator */,
 				52B551D527F5E0A5001B6DA4 /* AppDelegate.swift */,
 				52B551D727F5E0A5001B6DA4 /* SceneDelegate.swift */,
-				52B551D927F5E0A5001B6DA4 /* ViewController.swift */,
 				52B551DB27F5E0A5001B6DA4 /* Main.storyboard */,
 				52B551DE27F5E0A7001B6DA4 /* Assets.xcassets */,
 				52B551E027F5E0A7001B6DA4 /* LaunchScreen.storyboard */,
@@ -138,6 +139,7 @@
 				52B551EC27F5E5FA001B6DA4 /* MainCoordinator.swift */,
 				52B551EE27F5E96F001B6DA4 /* BlogCoordinator.swift */,
 				52B551F027F5E977001B6DA4 /* MapCoordinator.swift */,
+				529FB0F127FCB23A0009AD1F /* SplashCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -162,6 +164,7 @@
 				52C65E4727F616BF00805CC2 /* SplashScreenViewController.swift */,
 				52790B3C27F9B9B1001B1433 /* MapSearchResultsViewController.swift */,
 				52790B3E27FA040B001B1433 /* BaseTabPageViewController.swift */,
+				529FB0EF27FC93F90009AD1F /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C65E5E27F72C4A00805CC2 /* NetworkManager.swift in Sources */,
+				529FB0F227FCB23A0009AD1F /* SplashCoordinator.swift in Sources */,
 				52B6610127F8AF7D00C43625 /* DateFormatter+LTV.swift in Sources */,
 				52C65E7227F8A8B100805CC2 /* ArticleTableViewCell.swift in Sources */,
 				52C65E5027F6E60D00805CC2 /* Article.swift in Sources */,
@@ -329,12 +333,12 @@
 				52C65E6D27F73E9700805CC2 /* Repository.swift in Sources */,
 				52B6610327F8E20300C43625 /* LocalImageData.swift in Sources */,
 				52C65E5A27F72C3100805CC2 /* EndPoint.swift in Sources */,
+				529FB0F027FC93F90009AD1F /* WebViewController.swift in Sources */,
 				52C65E4827F616BF00805CC2 /* SplashScreenViewController.swift in Sources */,
 				52C65E5827F6E8C400805CC2 /* ImageAPI.swift in Sources */,
 				52B551F127F5E977001B6DA4 /* MapCoordinator.swift in Sources */,
 				52B551F927F60AE5001B6DA4 /* MapViewController.swift in Sources */,
 				52C65E6227F72CB000805CC2 /* URLParameterEncoder.swift in Sources */,
-				52B551DA27F5E0A5001B6DA4 /* ViewController.swift in Sources */,
 				52B551D627F5E0A5001B6DA4 /* AppDelegate.swift in Sources */,
 				52B551FB27F61054001B6DA4 /* MainTabViewController.swift in Sources */,
 				52C65E6727F735EF00805CC2 /* ArticleRepository.swift in Sources */,

@@ -7,12 +7,17 @@
 
 import Foundation
 import UIKit
-
+/*
+    Coordinator protocol, having the navigation moved out of the view controllers.
+    Every controller has a coordinator which is told to handle the navigation.
+    This way, instead of having controllers with multiple methods of instantiating + configuring other view controllers and then telling their
+    navigation controllers to show them, we simply call coordinator.takeMeToThatScreen() and everything happens under the hood.
+ */
 protocol Coordinator {
     var parentCoordinator: MainCoordinatorStandard? { get set }
-    var rootViewController: UIViewController { get set }
+    var rootViewController: UIViewController? { get set }
 
-    func start() -> UIViewController
+    func start() -> UIViewController?
     @discardableResult func resetToRoot() -> Self
 }
 
@@ -23,12 +28,22 @@ protocol MainCoordinatorStandard: Coordinator {
     func changeTab(tab: Tab)
 }
 
+protocol SplashCoordinatorStandard: Coordinator {
+    //the actual navigation methods
+    func showMainTabBarController(articles: [Article]?)
+}
+
 protocol BlogCoordinatorStandard: Coordinator {
-    //here add the actual navigation methods
+    //the actual navigation methods
+    func showArticleDetail(articleUrlString: String?)
 }
 
 protocol MapCoordinatorStandard: Coordinator {
-    //here add the actual navigation methods
+    //the actual navigation methods
+}
+
+protocol SplashCoordinated {
+    var coordinator: SplashCoordinatorStandard? { get }
 }
 
 protocol BlogCoordinated {
@@ -43,7 +58,7 @@ protocol MapCoordinated {
 extension Coordinator {
     var navigationViewController: UINavigationController? {
         get {
-            (rootViewController as? UINavigationController)
+            return rootViewController?.navigationController
         }
     }
     

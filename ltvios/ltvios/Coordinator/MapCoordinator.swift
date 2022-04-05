@@ -10,15 +10,11 @@ import UIKit
 
 class MapCoordinator: MapCoordinatorStandard {
     var parentCoordinator: MainCoordinatorStandard?
+    var childrenCoordinators: [Coordinator]?
     
-    lazy var rootViewController: UIViewController = UIViewController()
+    var rootViewController: UIViewController?
     
-    func start() -> UIViewController {
-        let vc = MapViewController.instantiateFromStoryboard()
-        vc.coordinator = self
-        
-        return vc
+    func start() -> UIViewController? {
+        return rootViewController
     }
-    
-    //add the actual navigator methods e.g go to blog item
 }

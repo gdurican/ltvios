@@ -16,10 +16,10 @@ enum Tab {
 
 class MainCoordinator: MainCoordinatorStandard {
     var parentCoordinator: MainCoordinatorStandard?
-    
+   
     var blogCoordinator: BlogCoordinatorStandard = BlogCoordinator()
     var mapCoordinator: MapCoordinatorStandard = MapCoordinator()
-    lazy var rootViewController: UIViewController = UITabBarController()
+    var rootViewController: UIViewController?
     
     func changeTab(tab: Tab) {
         switch tab {
@@ -31,14 +31,18 @@ class MainCoordinator: MainCoordinatorStandard {
         
     }
     
-    func start() -> UIViewController {
+    func start() -> UIViewController? {
         rootViewController = MainTabViewController.instantiateFromStoryboard()
-        let blogVC = (rootViewController as? MainTabViewController)?.viewControllers?[0]
+        let blogNav = (rootViewController as? MainTabViewController)?.viewControllers?[0] as? UINavigationController
+        let blogVC = blogNav?.children.first
         (blogVC as? BlogViewController)?.coordinator = blogCoordinator
+        blogCoordinator.rootViewController = blogVC ?? UIViewController()
         blogCoordinator.parentCoordinator = self
         
-        let mapVC = (rootViewController as? MainTabViewController)?.viewControllers?[1]
+        let mapNav = (rootViewController as? MainTabViewController)?.viewControllers?[1] as? UINavigationController
+        let mapVC = mapNav?.children.first
         (mapVC as? MapViewController)?.coordinator = mapCoordinator
+        mapCoordinator.rootViewController = mapVC
         mapCoordinator.parentCoordinator = self
 
         return rootViewController
